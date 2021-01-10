@@ -1,0 +1,14 @@
+version: "3"
+services:
+  postgres:
+    container_name: tasks_postgres
+    command: postgres -c 'max_connections=1000'
+    image: postgres:12.3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_INITDB_WALDIR: /pg_waldir
+      PGDATA: /pg_data
+    ports:
+      - 5432:5432
